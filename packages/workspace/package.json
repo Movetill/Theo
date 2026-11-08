@@ -1,0 +1,9 @@
+{
+  "name": "@theo/workspace",
+  "version": "0.3.0-m4",
+  "private": true,
+  "type": "module",
+  "exports": "./index.js",
+  "engines": { "node": ">=22" },
+  "license": "MIT"
+}

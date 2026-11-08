@@ -1,0 +1,72 @@
+{
+  "name": "dsh-plugin-theo",
+  "version": "0.3.0-rc.1",
+  "private": true,
+  "description": "Theo digital logic tutor and synchronous design workspace for DeepSeek Harness",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "dist/",
+    "cordis.patch.yml",
+    ".dsh/skills/",
+    "LICENSE",
+    "README.md",
+    "packages/core/package.json",
+    "packages/core/dist/",
+    "packages/workspace/index.js",
+    "packages/workspace/package.json",
+    "src/dsh/",
+    "examples/counter4-decoder/design.json",
+    "examples/counter4-decoder/reference.mjs",
+    "README.zh.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "docs/*.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspace @theo/core && tsc -p tsconfig.json",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "digital-logic",
+    "boolean-algebra",
+    "education",
+    "agent-skills"
+  ],
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  },
+  "workspaces": [
+    "packages/core",
+    "packages/workspace"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Movetill/Theo.git"
+  },
+  "homepage": "https://github.com/Movetill/Theo#readme",
+  "bugs": {
+    "url": "https://github.com/Movetill/Theo/issues"
+  }
+}

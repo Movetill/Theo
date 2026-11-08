@@ -1,0 +1,25 @@
+{
+  "name": "@theo/core",
+  "version": "0.3.0-m1",
+  "private": true,
+  "description": "Platform-independent Theo algorithms, bit vectors and digital design validation",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

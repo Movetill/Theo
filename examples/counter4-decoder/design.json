@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "0.3.0",
+  "id": "counter4_decoder",
+  "name": "4-bit synchronous counter with is_nine decoder",
+  "revision": 1,
+  "ports": [
+    { "id": "reset", "direction": "input", "width": 1 },
+    { "id": "enable", "direction": "input", "width": 1 },
+    { "id": "count", "direction": "output", "width": 4 },
+    { "id": "is_nine", "direction": "output", "width": 1 }
+  ],
+  "clocks": [{ "id": "clk", "edge": "rising" }],
+  "nodes": [
+    {
+      "id": "one",
+      "kind": "CONST",
+      "inputBindings": {},
+      "params": { "width": 4, "bits": "0001" }
+    },
+    {
+      "id": "nine",
+      "kind": "CONST",
+      "inputBindings": {},
+      "params": { "width": 4, "bits": "1001" }
+    },
+    {
+      "id": "increment",
+      "kind": "ADD",
+      "inputBindings": {
+        "a": { "nodeId": "counter", "port": "q" },
+        "b": { "nodeId": "one", "port": "out" }
+      },
+      "params": { "width": 4 }
+    },
+    {
+      "id": "hold_or_increment",
+      "kind": "MUX",
+      "inputBindings": {
+        "sel": { "nodeId": "enable", "port": "out" },
+        "whenFalse": { "nodeId": "counter", "port": "q" },
+        "whenTrue": { "nodeId": "increment", "port": "out" }
+      },
+      "params": { "width": 4 }
+    },
+    {
+      "id": "counter",
+      "kind": "REGISTER",
+      "inputBindings": {
+        "d": { "nodeId": "hold_or_increment", "port": "out" },
+        "reset": { "nodeId": "reset", "port": "out" }
+      },
+      "params": {
+        "width": 4,
+        "clockDomain": "clk",
+        "resetMode": "synchronous",
+        "resetActive": "high",
+        "resetValue": "0000",
+        "initialValue": "0000"
+      }
+    },
+    {
+      "id": "decode_nine",
+      "kind": "EQ",
+      "inputBindings": {
+        "a": { "nodeId": "counter", "port": "q" },
+        "b": { "nodeId": "nine", "port": "out" }
+      },
+      "params": { "width": 4 }
+    }
+  ],
+  "outputBindings": {
+    "count": { "nodeId": "counter", "port": "q" },
+    "is_nine": { "nodeId": "decode_nine", "port": "out" }
+  },
+  "metadata": {
+    "description": "Four-bit modulo-16 counter with synchronous reset priority, enable and equality decoding.",
+    "teachingTopic": "synchronous counter and combinational decoding"
+  }
+}

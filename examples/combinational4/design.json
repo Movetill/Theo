@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.3.0",
+  "id": "combinational4",
+  "name": "Four-bit adder, mux and equality comparator",
+  "revision": 1,
+  "ports": [
+    { "id": "a", "direction": "input", "width": 4 },
+    { "id": "b", "direction": "input", "width": 4 },
+    { "id": "sel", "direction": "input", "width": 1 },
+    { "id": "sum", "direction": "output", "width": 4 },
+    { "id": "selected", "direction": "output", "width": 4 },
+    { "id": "equal", "direction": "output", "width": 1 }
+  ],
+  "clocks": [],
+  "nodes": [
+    {
+      "id": "choose",
+      "kind": "MUX",
+      "params": { "width": 4 },
+      "inputBindings": {
+        "sel": { "nodeId": "sel", "port": "out" },
+        "whenFalse": { "nodeId": "a", "port": "out" },
+        "whenTrue": { "nodeId": "add", "port": "out" }
+      }
+    },
+    {
+      "id": "compare",
+      "kind": "EQ",
+      "params": { "width": 4 },
+      "inputBindings": { "a": { "nodeId": "a", "port": "out" }, "b": { "nodeId": "b", "port": "out" } }
+    },
+    {
+      "id": "add",
+      "kind": "ADD",
+      "params": { "width": 4 },
+      "inputBindings": { "a": { "nodeId": "a", "port": "out" }, "b": { "nodeId": "b", "port": "out" } }
+    }
+  ],
+  "outputBindings": {
+    "sum": { "nodeId": "add", "port": "out" },
+    "selected": { "nodeId": "choose", "port": "out" },
+    "equal": { "nodeId": "compare", "port": "out" }
+  }
+}

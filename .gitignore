@@ -1,0 +1,13 @@
+node_modules/
+*.log
+coverage/
+.DS_Store
+.env
+.theo-adapter-test-*.mjs
+.theo-workspace/
+*.tgz
+dist/
+.env.*
+*.zip
+releases/
+docs/validation/
