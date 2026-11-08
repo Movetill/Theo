@@ -1,5 +1,9 @@
 # Theo 🧠 — Digital Logic & Systems Companion
 
+<p align="center">
+  <img src="assets/theo.png" width="320" alt="Theo mascot with a laptop and digital logic textbooks">
+</p>
+
 **An open-source, verification-first learning assistant for an entire Digital Logic / Digital Systems course.**
 
 Theo uses a [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Skill for pedagogy and a Cordis plugin for verifiable computing. Unlike a Boolean algebra-only calculator, Theo is organized around eight course domains: number systems and codes; Boolean functions; combinational design; sequential circuits; Verilog HDL; memory; programmable logic; and small controllers.

@@ -1,5 +1,9 @@
 # Theo 数字逻辑学习助手
 
+<p align="center">
+  <img src="assets/theo.png" width="320" alt="Theo 项目形象，身旁是笔记本电脑和数字逻辑教材">
+</p>
+
 Theo 在 DeepSeek Harness（DSH）中调用可复现的数字逻辑工具。v0.3 候选版支持保存设计版本、仿真单时钟同步电路、回放逐周期轨迹，以及用独立参考模型核对计数器。
 
 [English README](README.md) · [Mac 安装](docs/DSH_INTEGRATION.md) · [贡献指南](CONTRIBUTING.md)
